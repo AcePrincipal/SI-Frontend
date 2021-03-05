@@ -1,5 +1,6 @@
 const newIdea = document.querySelector("#new-idea")
 const ideaForm = document.querySelector("#idea-form")
+const backBttn = document.querySelector("#back-button") 
 
 class Idea {
     constructor({id, title, content}){
@@ -79,5 +80,15 @@ class Idea {
          <p>${this.content}</p>
          `   
          return this.element
+    }
+
+    static listenForBackBttn() {
+        backBttn.addEventListener('click', this.goBack)
+    }
+
+    static goBack() {
+        document.querySelector("#ideas-list").innerHTML = " "
+        document.querySelector("#business-show").style.display = "none"
+        document.querySelector("#businesses-list").style.display = "block"
     }
 }
